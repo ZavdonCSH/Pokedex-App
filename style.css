@@ -32,7 +32,6 @@ input {
   text-transform: capitalize;
   width: 200px;
   border-radius: 5%;
-  /* box-shadow: 5px 20px 10px rgb(214,211, 211); */
   margin-left: 10px;
   cursor: pointer;
 
