@@ -37,12 +37,12 @@ const displayPokemon = pokemon => {
                             ${pokemon.id}
                         </p>
                         <h3 class="name">${pokemon.name}</h3>
-                        <div class="typing">
-                            <span class="${pokemon.type}">${pokemon.type}</span>
-                        </div>
-                        <div class="typing">
-                            <span class="${pokemon.type}">${pokemon.type2}</span>
-                        </div>
+                    </div>
+                    <div class="typing">
+                         <span class="${pokemon.type}">${pokemon.type}</span>
+                    </div>
+                    <div class="typing">
+                        <span class="${pokemon.type2}">${pokemon.type2}</span>
                     </div>
                 </li>`
             } else {
@@ -55,9 +55,9 @@ const displayPokemon = pokemon => {
                             ${pokemon.id}
                         </p>
                         <h3 class="name">${pokemon.name}</h3>
-                        <div class ="typing">
-                            <span class="${pokemon.type}">${pokemon.type}</span>
-                        </div>
+                    </div>
+                    <div class ="typing">
+                        <span class="${pokemon.type}">${pokemon.type}</span>
                     </div>
                 </li>`
             }
