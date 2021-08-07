@@ -99,8 +99,3 @@ const searchInput = document.getElementById('search')
 const suggestions = document.querySelector('.search')
 
 searchInput.addEventListener('keyup', displayMatches);
-
-document.getElementById('searchForm').addEventListener('submit', function (e) {
-    search(document.getElementById('search'));
-    e.preventDefault();
-}, false);
