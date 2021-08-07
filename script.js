@@ -1,12 +1,17 @@
 const pokedex = document.getElementById('pokedex')
 
 
+
+
+
+
+
 const fetchPokemon = () => {
 
     const promises = [];
     for (let i = 1; i <= 151 ; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${i}`
-        promises.push(fetch(url).then(resp => resp.json()).then((data) => data));
+        promises.push(fetch(url).then(resp => resp.json()));
     };
     Promise.all(promises).then( results => {
           const pokemon = results.map((data) => 
@@ -24,7 +29,6 @@ const fetchPokemon = () => {
 fetchPokemon();
 
 const displayPokemon = pokemon => {
-    console.log(pokemon);
     const pokemonHTMLString = pokemon
         .map(pokemon => {
             if (pokemon.type2) {
@@ -64,3 +68,39 @@ const displayPokemon = pokemon => {
         }).join("") 
         pokedex.innerHTML = pokemonHTMLString;
 };
+
+const namesAndIds = [];
+const pokePromises = [];
+
+for(let i = 1; i <= 151 ; i++){
+    const names = [`https://pokeapi.co/api/v2/pokemon/${i}`];
+    pokePromises.push(fetch(names).then((resp) =>  resp.json()));
+}
+
+Promise.all(pokePromises).then(results => {
+     pokeInfo = results.map((data) => ({
+        name: data.name,
+        id: data.id,
+        sprite: data.sprites["front_default"],
+        type: data.types["0"].type.name,
+        type2: data.types && data.types[1] && data.types[1].type && data.types[1].type.name
+    }))
+}).then(data => namesAndIds.push(...pokeInfo)); 
+
+function displayMatches() {
+    const searchInput = this.value;
+    const filteredPokemon = namesAndIds.filter( data => {
+       return data.name.includes(searchInput) || data.id.toString().match(searchInput)
+    });
+    displayPokemon(filteredPokemon)
+};
+
+const searchInput = document.getElementById('search')
+const suggestions = document.querySelector('.search')
+
+searchInput.addEventListener('keyup', displayMatches);
+
+document.getElementById('searchForm').addEventListener('submit', function (e) {
+    search(document.getElementById('search'));
+    e.preventDefault();
+}, false);

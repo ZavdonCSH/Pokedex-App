@@ -14,9 +14,10 @@
     <div class="Logo">
       <img src="poke.png" alt="pokedex logo">
     </div>
-    <div class="search">
-      <input class="search-box" type="search" placeholder="Search For Pokemon">
-    </div>
+    <form id="searchForm" onsubmit="return false">
+      <input id="search" type="text" placeholder="Search Pokemon Name or ID">
+      <ul class="suggestions"></ul>
+    </form>
     <div id="pokedex"></div>
 
 
