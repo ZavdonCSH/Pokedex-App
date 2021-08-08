@@ -82,7 +82,7 @@ Promise.all(pokePromises).then(results => {
 }).then(data => namesAndIds.push(...pokeInfo)); 
 
 function displayMatches() {
-    const searchInput = this.value;
+    const searchInput = this.value.toLowerCase();
     const filteredPokemon = namesAndIds.filter( data => {
        return data.name.includes(searchInput) || data.id.toString().match(searchInput)
     });
